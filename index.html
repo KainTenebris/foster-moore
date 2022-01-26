@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-nz" dir="ltr">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<div id=form>
+		<h2>Customer Details</h2>
+		<svg><circle/></svg><br><br>
+		
+		<form onsubmit="return submit_form()" action="summary.html">
+		  <label for="fname">First name</label>
+		  <svg><circle/></svg><br>
+		  <input required type="text" id="fname" name="fname" value=""><br><br>
+		  
+		  <label for="lname">Last name</label><br>
+		  <input type="text" id="lname" name="lname" value=""><br><br>
+		  
+		  <label for="dob">Date Of Birth</label><br>
+		  <input class="date" type="date" id="dob" name="dob" value=""><br><br>
+		  
+		  <label for="cob">Country Of Birth</label><br>
+		  <select id="cob" name="cob" value="">
+		  	<option value="uk">United Kingdom</option>
+		  	<option value="nz">New Zealand</option>
+		  	<option value="aus">Australia</option>
+		  	<option value="fr">France</option>
+		  	<option value="trk">Turkey</option>
+		  </select>
+		  <br><br>
+		  
+		  <label for="dlnum">Driver's License Number</label><br>
+		  <input type="text" id="dlnum" name="dlnum" value=""><br><br>
+		  
+		  <label for="dldate">Driver's License Date</label><br>
+		  <input class="date" type="date" id="dldate" name="dldate" value=""><br><br>
+		  
+		  <label for="dlpic">Upload Driver's License Photo</label><br>
+		  <input class="file" type="file" accept=".jpg,.png" id="dlpic" name="dlpic" value=""><br><br>
+		  
+		  <input id="submit" class=button type="submit" value="Submit">
+		</form> 
+	</div>
+</body>
+
+<script src="./database.js"></script>
+<script>
+	function submit_form() {
+		if (!window.indexedDB) {    
+			window.alert("Your browser doesn't support IndexedDB. ");    
+		}
+		
+		open_database();
+	}
+</script>
